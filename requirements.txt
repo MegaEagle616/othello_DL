@@ -1,0 +1,6 @@
+websocket-client==0.59.0
+google-auth-oauthlib==0.4.3
+
+numpy~=1.22.2
+tensorflow-gpu~=2.8.0
+keras~=2.8.0
