@@ -54,19 +54,19 @@ class OthelloModel:
     def load_weights(self):
         self.model.load_weights('othello/bots/DeepLearning/models/'+self.model_name)
     
-    def reset(self, confirm=False):
-        if not confirm:
-            raise Exception('this operate would clear model weight, pass confirm=True if really sure')
-        else:
-            try:
-                os.remove('othello/bots/DeepLearning/models/'+self.model_name)
-            except:
-                pass
-        print('cleared')
+    # def reset(self, confirm=False):
+    #     if not confirm:
+    #         raise Exception('this operate would clear model weight, pass confirm=True if really sure')
+    #     else:
+    #         try:
+    #             os.remove('othello/bots/DeepLearning/models/'+self.model_name)
+    #         except:
+    #             pass
+    #     print('cleared')
 
     def resnet_v1(self, inputs, num_res_blocks):
         x = inputs
-        for  i in range(1):
+        for i in range(1):
             resnet = self.resnet_layer(inputs=x, num_filter=128)
             resnet = self.resnet_layer(inputs=resnet, num_filter=128, activation=None)
             resnet = add([resnet, x])
@@ -107,8 +107,8 @@ class OthelloModel:
                     strides=strides,
                     padding=padding,
                     use_bias=False,
-                    kernel_regularizer=l2(1e-4))
-        
+                    kernel_regularizer=l2(1e-4)
+        )
         x = inputs
         if conv_first:
             x = conv(x)
@@ -125,7 +125,7 @@ class OthelloModel:
             x = conv(x)
         return x
 
-    def DenseLayer(self, growthRate, dropRate=0.2):
+    def DenseLayer(self, growthRate, dropRate=0.0):
 
         # bottleneck
         x = BatchNormalization(axis=3)(self)

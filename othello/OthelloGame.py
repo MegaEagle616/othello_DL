@@ -9,7 +9,7 @@ class OthelloGame(np.ndarray):
         return super().__new__(cls, shape=(n,n), dtype='int')
     
     def __init__(self, n):
-        self.n=n
+        self.n = n
         self.current_player=OthelloGame.BLACK
         self[np.where(self!=0)]=0
         self[int(n/2)][int(n/2)]=OthelloGame.WHITE

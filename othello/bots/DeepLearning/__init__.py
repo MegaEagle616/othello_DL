@@ -7,8 +7,8 @@ from othello.OthelloGame import OthelloGame
 class BOT:
 
     def __init__(self, board_size, *args, **kargs):
-        self.board_size=board_size
-        self.model = OthelloModel(input_shape=(self.board_size, self.board_size) )
+        self.board_size = board_size
+        self.model = OthelloModel(input_shape=(self.board_size, self.board_size))
         try:
             self.model.load_weights()
             print('model loaded')
@@ -23,7 +23,7 @@ class BOT:
         predict = self.model.predict( game )
         valid_positions=getValidMoves(game, color)
         valids=np.zeros((game.size), dtype='int')
-        valids[ [i[0]*game.n+i[1] for i in valid_positions] ]=1
+        valids[[i[0]*game.n+i[1] for i in valid_positions] ]=1
         predict*=valids
         position = np.argmax(predict)
         

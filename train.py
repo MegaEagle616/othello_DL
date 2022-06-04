@@ -4,10 +4,11 @@ from othello.bots.DeepLearning import BOT
 class Human:
     def getAction(self, game, color):
         print('input coordinate:', end='')
-        coor=input()
-        return (int(coor[1])-1, ord(coor[0])-ord('A'))
-BOARD_SIZE=8
+        coor = input()
+        return int(coor[1])-1, ord(coor[0])-ord('A')
 
+
+BOARD_SIZE = 8
 
 bot = BOT(board_size=BOARD_SIZE)
 args = {
